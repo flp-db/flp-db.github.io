@@ -95,6 +95,24 @@
 		height: 100px;
 
 	}
+	#overlay{
+		background-color: black;
+		color:white;
+		width:100%;
+		height:100%;
+		position: fixed;
+		z-index: 100;
+	}
+	#keyscreen{
+		text-align: center;
+		width:130px;
+		height:35px;
+		top:50%;
+		left:50%;
+		margin-top: -17px;
+		margin-left: -65px;
+		position:absolute;
+	}
 	#delete {
 		z-index: 100;
 		display:none;
@@ -188,11 +206,20 @@
 </style>
 </head>
 <body>
-	
+	<div id="overlay">
+		<div id="keyscreen">
+			<span>please enter key</span>
+			<br>
+			<input id="keyin"></input>
+		</div>
+	</div>
+
+
 	<div id="canvascontainer" class="top">
 		<b id="title">FLP DB</b>
 		<canvas id="myChart"></canvas>
 		<div class="top" id="stats" style="float:left;"></div>
+		
 	</div>
 	
 	<header class="top"><i id="addu" class="fa fa-user-plus"></i></header>
@@ -311,7 +338,12 @@
 			$('*[name=u-preferredstart]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
 			$('*[name=n-preferredstart]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
 		});
-			
+		$('#keyin').keypress(function (e) {
+		  if (e.which == 13) {
+		  	get();
+		  	console.log("checking credentials");
+		  }
+		});
 			$("#searchfield").on("keyup", function()
 			{
 				var value = $(this).val();
@@ -438,58 +470,68 @@
 
 			
 			//get
-			get();
-			function get(){
-				$("#results").html("");
-				$.ajax({
-			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
-			    type: "GET",
-			    contentType: "application/json"
-			}).done(function( res ) {
-				master=res;
-			    for (var i = res.length - 1; i >= 0; i--) {
-			    	//console.log(res[i]);
-			    	if(res[i].status == "rejected".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		rejected++;
-			    	}
-			    	else if(res[i].status == "graduate".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		graduate++;
-			    	}
-			    	else if(res[i].status == "drop out".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:orange'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		dropped++;
-			    	}
-			    	else if(res[i].status == "nominated".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		nominated++;
-			    	}
-			    	else if(res[i].status == "waiting list".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		waiting++;
-			    	}
-			    	else if(res[i].status == "enrolled".trim()){
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		enrolled++
-			    	}
-			    	else{
-			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
-			    		other++
-			    	}
-			    };
-			    $('#results tr').click(function(){
-			    		//console.log(this.id);
-			    		currentselection=this.id;
-			 			getUser(currentselection);
-			    	});
-			    calcStats();
-			    });
-			    $('#keywords').stupidtable();
-			    
-			}
+			//get();
+			
 			});
 		;
+		function get(){
+				key=$("#keyin").val();
+				$("#results").html("");
+				$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey="+key,
+			    type: "GET",
+			    contentType: "application/json",
+			    success:function( res ) {
+			    	$("#overlay").fadeOut();
+					master=res;
+				    for (var i = res.length - 1; i >= 0; i--) {
+				    	//console.log(res[i]);
+				    	if(res[i].status == "rejected".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		rejected++;
+				    	}
+				    	else if(res[i].status == "graduate".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		graduate++;
+				    	}
+				    	else if(res[i].status == "drop out".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:orange'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		dropped++;
+				    	}
+				    	else if(res[i].status == "nominated".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		nominated++;
+				    	}
+				    	else if(res[i].status == "waiting list".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		waiting++;
+				    	}
+				    	else if(res[i].status == "enrolled".trim()){
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		enrolled++
+				    	}
+				    	else{
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		other++
+				    	}
+				    };
+				    $('#results tr').click(function(){
+				    		//console.log(this.id);
+				    		currentselection=this.id;
+				 			getUser(currentselection);
+				    	});
+				    calcStats();
+				},
+				error:function(){
+					console.log("error!");
+					master="error";
+				}
+			});
+			
+			$('#keywords').stupidtable();
+			
+
+		}
 		//stats
 		function calcStats(){
 			$("#stats").text("Total Records : " + master.length);
@@ -542,8 +584,9 @@
 		//getuser
 		function getUser(user)
 		{
+			key=$("#keyin").val();
 			$.ajax({
-			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey="+key,
 			    type: "GET",
 			    dataType:"JSON",
 			    contentType: "application/json"
@@ -605,8 +648,9 @@
 			$("#deletetext").html("Are you sure you want to delete user "+$('#u-fn').val()+" "+$('#u-ln').val()+"?<br>");
 		}
 		function deleteUser(user){
+			key=$("#keyin").val();
 			$.ajax({
-			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey="+key,
 			    type: "DELETE",
 			    async:true,
 			    timeout:30000
@@ -617,8 +661,9 @@
 		//post
 		function postUser(user)
 		{
+			key=$("#keyin").val();
 			$.ajax({
-			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey="+key,
 			    type: "POST",
 			    data: JSON.stringify( user ),
 			    contentType: "application/json"
@@ -628,8 +673,9 @@
 		}
 		function updateUser(user,toupdate)
 		{
+			key=$("#keyin").val();
 			$.ajax({
-			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+toupdate+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+toupdate+"?apiKey="+key,
 			    type: "PUT",
 			    data: JSON.stringify( user ),
 			    contentType: "application/json"
