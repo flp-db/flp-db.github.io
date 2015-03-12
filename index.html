@@ -1,0 +1,655 @@
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+ <script src="/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script src="/js/jquery.simple-dtpicker.js" type="text/javascript"></script>
+<script src="/js/stupidtable.min.js" type="text/javascript"></script>
+<script src="/js/chart.js"></script>
+<link rel="stylesheet" href="css/jquery.simple-dtpicker.css">
+<link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<style type="text/css">
+	* {
+		font-family: Arial;
+		
+	}
+	html {
+		min-height: 100%;
+	}
+	body {
+		background:rgba(0,102,205,0.6);
+		margin : 0;
+		min-width: 420px;
+		position:relative;
+		min-height: 100%;
+	}
+	.top{
+		font-size: 25px;
+		background:#66CC00;
+		width:100%;
+		height:40px;
+		color:white;
+		line-height:40px;
+		text-shadow:2px 2px 2px #000000;
+		text-align: center;
+	}
+	.searchbar{
+		margin-top: 5px;
+		background:rgba(0,0,0,0.4);
+		width:100%;
+		height:30px;
+		color:white;
+		line-height:30px;
+	}
+	.search{
+		font-size: 20px;
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,0);
+		border:none;
+		color:white;
+	}
+	.inputs {
+		font-size: 15px;
+		width:317px;
+		height:30px;
+		background-color:rgba(0,0,0,0.4);
+		border:none;
+		color:white;
+		margin-top: 5px;
+	}
+	#n-comments, #u-comments {
+		resize: none;
+		width:100%;
+		height:80px;
+	}
+	#newuser{
+		display:none;
+		background:rgba(0,102,205,0.9);
+		padding:10px;
+		position:fixed;
+		width:640px;
+		height:480px;
+		top: 50%;
+	    left: 50%;
+	    margin-top: -240px;
+	    margin-left: -320px;
+		color:white;
+	}
+	#userpane{
+		display:none;
+		background:rgba(0,102,205,0.9);
+		padding:10px;
+		position:fixed;
+		width:640px;
+		height:520px;
+		top: 50%;
+	    left: 50%;
+	    margin-top: -250px;
+	    margin-left: -320px;
+		color:white;
+	}
+	#myChart{
+		width:100%;
+		height: 100px;
+
+	}
+	#delete {
+		z-index: 100;
+		display:none;
+		background:rgba(255,0,0,0.9);
+		padding:10px;
+		position:absolute;
+		width:620px;
+		height:460px;
+		top: 50%;
+	    left: 50%;
+	    margin-top: -240px;
+	    margin-left: -320px;
+		color:white;
+	}
+	#keywords {
+		color:white;
+		margin-top:5px;
+		background:rgba(0,0,0,0.4);
+		width:100%;
+		table-layout: fixed;
+		white-space: nowrap;
+	}
+	#keywords td{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	#closebutton, #closebuttonuserpane {
+		position:absolute;
+		right:0;
+		top:0;
+	}
+	#adduserbutton, #updateuserbutton {
+		margin-top: 5px;
+		height:25px;
+		line-height: 25px;
+		background:rgba(0,0,150,0.9);
+		width:100%;
+		color:white;
+		text-align: center;
+	}
+	#adduserbutton:hover, #updateuserbutton:hover{
+		background:rgba(0,0,250,0.9);
+	}
+	#delbut, #cancelbut {
+		float:left;
+		width:49%;
+	}
+	#delbut {
+		background:black;
+		color:red;
+	}
+	#cancelbut {
+		background:yellow;
+		color:black;
+	}
+	canvas {
+		height: 80px !important;
+		width: auto !important;
+	}
+	.smalltext {
+		font-size: 10px;
+	}
+	.datepicker{
+		width:50%;
+	}
+	th,td {
+		padding:5px;
+		width:100px;
+		border: 1px solid grey;
+		overflow: hidden;
+	}
+	#tbl-id{
+		width: 100px;
+	}
+	#canvascontainer{
+		position: relative;
+		height:90px;
+		display: table;
+	}
+	#title {
+		height:90px;
+		position:absolute;
+		top:50%;
+		margin-top:-45px;
+		left:20px;
+	}
+	#stats{
+		font-size: 17px;
+	}
+</style>
+</head>
+<body>
+	
+	<div id="canvascontainer" class="top">
+		<b id="title">FLP DB</b>
+		<canvas id="myChart"></canvas>
+		<div class="top" id="stats" style="float:left;"></div>
+	</div>
+	
+	<header class="top"><i id="addu" class="fa fa-user-plus"></i></header>
+	<header class="searchbar">
+		<input placeholder="Search Here..." class="search" id="searchfield"></input>
+	</header>
+
+	<table id="keywords" class="tablesorter" cellspacing="0" cellpadding="0">
+
+    <thead>
+      <tr>
+      	<th data-sort="string" style="width:15%">Status</th>
+        <th id="tbl-id" style="width:20%" data-sort="int">ID</th>
+        <th data-sort="string" style="width:35%">FirstName</th>
+        <th data-sort="string" style="width:35%">LastName</th>
+      </tr>
+    </thead>
+
+    <tbody id="results">
+    </tbody>
+    
+    </table>
+	<div id="userpane">
+		<div>Selected user:</div>
+		<div id="closebuttonuserpane"><i class="fa fa-times"></i></div>
+		<input placeholder="Status" id="u-status" class="inputs"/>
+    	<input placeholder="First Name" id="u-fn" class="inputs"/>
+    	<input placeholder="Last Name" id="u-ln" class="inputs"/>
+    	<input placeholder="Username" id="u-username" class="inputs"/>
+    	<input placeholder="Module" id="u-module" class="inputs"/>
+    	<select id="u-nro" class="inputs">
+			<option value="int">International</option>
+			<option value="eu">EU Unit</option>
+			<option value="sci">Science Unit</option>
+			<option value="afr">Africa</option>
+		</select> 
+    	<input placeholder="Function" id="u-function" class="inputs"/>
+    	<input placeholder="Unit" id="u-unit" class="inputs"/>
+    	<input placeholder="Date of Birth" id="u-dob" name="u-dob" class="inputs"/>
+    	<input placeholder="Email" id="u-email" class="inputs"/>
+    	<input placeholder="Skype" id="u-skype" class="inputs"/>
+    	<input placeholder="Mobile" id="u-mobile" class="inputs"/>
+    	<input placeholder="With GP since" id="u-withgp" name="u-withgp" class="inputs"/>
+    	<input placeholder="Preferred Start Date" id="u-preferredstart" name="u-preferredstart" class="inputs"/>
+    	<input placeholder="First Name Line Manager" id="u-fnline" class="inputs"/>
+    	<input placeholder="Last Name Line Manager" id="u-lnline" class="inputs"/>
+    	<input placeholder="Email Line Manager" id="u-emailline" class="inputs"/>
+    	<input placeholder="First Name HR Rep" id="u-fnhr" class="inputs"/>
+    	<input placeholder="Last Name HR Rep" id="u-lnhr" class="inputs"/>
+    	<input placeholder="Skype HR Rep" id="u-skypehr" class="inputs"/>
+    	<input placeholder="Email HR Rep" id="u-emailhr" class="inputs"/>
+    	<textarea placeholder="Comments" id="u-comments" class="inputs"></textarea> 
+    	<div id="updateuserbutton"> Update User </div>
+    	<div class="smalltext">Press alt+shift+D to delete user.</div>
+    	<div id="delete">
+	    	<div id="deletetext">
+	    	</div><br>
+		    <div id='delbut'> DELETE </div>
+		    <div id='cancelbut'> CANCEL </div>
+		</div>
+		</div>
+    <div id="newuser">
+    	<div>Create a new user : </div>
+    	<div id="closebutton"><i class="fa fa-times"></i></div>
+		<input placeholder="Status" id="n-status" class="inputs"/>
+    	<input placeholder="First Name" id="n-fn" class="inputs"/>
+    	<input placeholder="Last Name" id="n-ln" class="inputs"/>
+    	<input placeholder="Username" id="n-username" class="inputs"/>
+    	<input placeholder="Module" id="n-module" class="inputs"/>
+    	<select id="n-nro" class="inputs">
+			<option value="int">International</option>
+			<option value="eu">EU Unit</option>
+			<option value="sci">Science Unit</option>
+			<option value="afr">Africa</option>
+		</select> 
+    	<input placeholder="Function" id="n-function" class="inputs"/>
+    	<input placeholder="Unit" id="n-unit" class="inputs"/>
+    	<input placeholder="Date of Birth" id="n-dob" name="n-dob" class="inputs"/>
+    	<input placeholder="Email" id="n-email" class="inputs"/>
+    	<input placeholder="Skype" id="n-skype" class="inputs"/>
+    	<input placeholder="Mobile" id="n-mobile" class="inputs"/>
+    	<input placeholder="With GP since" id="n-withgp" name="n-withgp" class="inputs"/>
+    	<input placeholder="Preferred Start Date" id="n-preferredstart" name="n-preferredstart" class="inputs"/>
+    	<input placeholder="First Name Line Manager" id="n-fnline" class="inputs"/>
+    	<input placeholder="Last Name Line Manager" id="n-lnline" class="inputs"/>
+    	<input placeholder="Email Line Manager" id="n-emailline" class="inputs"/>
+    	<input placeholder="First Name HR Rep" id="n-fnhr" class="inputs"/>
+    	<input placeholder="Last Name HR Rep" id="n-lnhr" class="inputs"/>
+    	<input placeholder="Skype HR Rep" id="n-skypehr" class="inputs"/>
+    	<input placeholder="Email HR Rep" id="n-emailhr" class="inputs"/>
+    	<textarea placeholder="Comments" id="n-comments" class="inputs"></textarea> 
+    	<div id="adduserbutton"> Add User </div>
+    </div>
+
+
+	<script type="text/javascript">
+	var master;
+	var currentselection;
+	var rejected = 0;
+	var accepted = 0;
+	var enrolled = 0;
+	var dropped = 0;
+	var graduate = 0;
+	var nominated = 0;
+	var waiting = 0;
+	var other = 0;
+	
+
+	
+		$(document).ready(function(){
+		$(function(){
+			$('*[name=u-dob]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+			$('*[name=n-dob]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+			$('*[name=u-withgp]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+			$('*[name=n-withgp]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+			$('*[name=u-preferredstart]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+			$('*[name=n-preferredstart]').appendDtpicker({"dateOnly":true,"closeOnSelected": true});
+		});
+			
+			$("#searchfield").on("keyup", function()
+			{
+				var value = $(this).val();
+    			$("#results tr").each(function()
+    			{
+        			$row = $(this);
+        			var id = $row.find("td:first").text();
+        			var fn = $row.find("td:nth-child(2)").text();
+        			var ln = $row.find("td:nth-child(3)").text();
+
+		            if (fn.toLowerCase().indexOf(value.toLowerCase()) !== 0)
+		            {
+		                $(this).hide();
+		                if (ln.toLowerCase().indexOf(value.toLowerCase()) !== 0)
+			            {
+			                $(this).hide();
+			                if (id.toLowerCase().indexOf(value.toLowerCase()) !== 0)
+				            {
+				                $(this).hide();
+				            }
+				            else
+				            {
+				                $(this).show();
+				            }
+			            }
+			            else
+			            {
+			                $(this).show();
+			            }
+		            }
+		            else
+		            {
+		                $(this).show();
+
+		            }
+			    })
+			});
+			$("#delbut").on('click',function(){
+				$("#userpane").fadeOut();
+				deleteUser(currentselection);
+				$("#delete").fadeOut();
+				$("#deletetext").html("");
+				setTimeout(function(){get()},1500);
+			})
+			$("#cancelbut").on('click',function(){
+				$("#delete").fadeOut();
+				$("#deletetext").html();
+			})
+			$("#addu").on('click',function(){
+				$("#newuser").fadeIn();
+				$("#newuser").find('input:text').val(''); 
+			})
+			$("#closebutton").on('click',function(){
+				$("#newuser").fadeOut();
+			})
+			$("#closebuttonuserpane").on('click',function(){
+				$("#userpane").fadeOut();
+				$("#delete").fadeOut();
+				$("#deletetext").html("");
+			})
+			$("#adduserbutton").on('click',function(){
+				$("#userpane").fadeOut();
+				console.log($("#n-fn").val());
+				var d = new Date();
+				var ts = Date.now() /1000 |0
+				var date = new Date(ts*1000 + d.getTimezoneOffset() * 60000)
+				postUser({
+					status:$("#n-status").val(),
+					fn:$("#n-fn").val(),
+					ln:$("#n-ln").val(),
+					ts:date,
+					username:$("#n-fn").val(),
+					nro:$("#n-nro").val(),
+					funct:$("#n-function").val(),
+					unit:$("#n-unit").val(),
+					dob:$("#n-dob").val(),
+					email:$("#n-email").val(),
+					skype:$("#n-skype").val(),
+					mobile:$("#n-mobile").val(),
+					atgp:$("#n-withgp").val(),
+					prefstart:$("#n-preferredstart").val(),
+					fnlm:$("#n-fnline").val(),
+					lnlm:$("#n-lnline").val(),
+					emaillm:$("#n-emailline").val(),
+					fnhr:$("#n-fnhr").val(),
+					lnhr:$("#n-lnhr").val(),
+					emailhr:$("#n-emailhr").val(),
+					skypehr:$("#n-skypehr").val()
+				})
+				$("#newuser").fadeOut();
+				$("#newuser").find('input:text').val(''); 
+				setTimeout(function(){get()},1500);
+			})
+			$("#updateuserbutton").on('click',function(){
+				$("#delete").fadeOut();
+				$("#deletetext").html("");
+				$("#newuser").fadeOut();
+
+				updateUser({ "$set" : {
+					status:$("#u-status").val(),
+					fn:$("#u-fn").val(),
+					ln:$("#u-ln").val(),
+					username:$("#u-username").val(),
+					nro:$("#u-nro").val(),
+					funct:$("#u-function").val(),
+					unit:$("#u-unit").val(),
+					dob:$("#u-dob").val(),
+					email:$("#u-email").val(),
+					skype:$("#u-skype").val(),
+					mobile:$("#u-mobile").val(),
+					atgp:$("#u-withgp").val(),
+					prefstart:$("#u-preferredstart").val(),
+					fnlm:$("#u-fnline").val(),
+					lnlm:$("#u-lnline").val(),
+					emaillm:$("#u-emailline").val(),
+					fnhr:$("#u-fnhr").val(),
+					lnhr:$("#u-lnhr").val(),
+					emailhr:$("#u-emailhr").val(),
+					skypehr:$("#u-skypehr").val()
+				}},currentselection);
+				 $("#userpane").fadeOut();
+				 setTimeout(function(){get()},1500);
+			});
+
+			
+			//get
+			get();
+			function get(){
+				$("#results").html("");
+				$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    type: "GET",
+			    contentType: "application/json"
+			}).done(function( res ) {
+				master=res;
+			    for (var i = res.length - 1; i >= 0; i--) {
+			    	//console.log(res[i]);
+			    	if(res[i].status == "rejected".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		rejected++;
+			    	}
+			    	else if(res[i].status == "graduate".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		graduate++;
+			    	}
+			    	else if(res[i].status == "drop out".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:orange'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		dropped++;
+			    	}
+			    	else if(res[i].status == "nominated".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		nominated++;
+			    	}
+			    	else if(res[i].status == "waiting list".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		waiting++;
+			    	}
+			    	else if(res[i].status == "enrolled".trim()){
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		enrolled++
+			    	}
+			    	else{
+			    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+			    		other++
+			    	}
+			    };
+			    $('#results tr').click(function(){
+			    		//console.log(this.id);
+			    		currentselection=this.id;
+			 			getUser(currentselection);
+			    	});
+			    calcStats();
+			    });
+			    $('#keywords').stupidtable();
+			    
+			}
+			});
+		;
+		//stats
+		function calcStats(){
+			$("#stats").text("Total Records : " + master.length);
+			var ctx = document.getElementById("myChart").getContext("2d");
+			
+			var data = [
+			{
+				value: enrolled,
+				color:"blue",
+				highlight: "#FF5A5E",
+				label: "Enrolled"
+			},{
+				value: rejected,
+				color: "red",
+				highlight: "#5AD3D1",
+				label: "Rejected"
+			},{
+				value: graduate,
+				color: "green",
+				highlight: "white",
+				label: "Graduated"
+			},{
+				value: dropped,
+				color: "orange",
+				highlight: "#5AD3D1",
+				label: "Dropped Out"
+			},{
+				value: other,
+				color: "black",
+				highlight: "#5AD3D1",
+				label: "Other"
+			},{
+				value: nominated,
+				color: "blueviolet",
+				highlight: "#5AD3D1",
+				label: "Dropped Out"
+			},{
+				value: waiting,
+				color: "grey",
+				highlight: "#FFC870",
+				label: "Waiting List"
+			}
+			];
+			var pieOptions = {
+				segmentShowStroke : false,
+				animateScale : true
+			}
+			var myNewChart = new Chart(ctx).Doughnut(data, pieOptions);
+		}
+		//getuser
+		function getUser(user)
+		{
+			$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    type: "GET",
+			    dataType:"JSON",
+			    contentType: "application/json"
+			}).done(function( res ) {
+				//console.log(res);
+			    //$("#userpane").append(res.fn);
+			    $("#u-status").val(res.status);
+			    $("#u-fn").val(res.fn);
+				$("#u-ln").val(res.ln);
+				$("#u-username").val(res.username);
+				$("#u-module").val();
+				$("#u-nro").val(res.nro);
+				$("#u-function").val(res.funct);
+				$("#u-unit").val(res.unit);
+				$("#u-dob").val(res.dob);
+				$("#u-email").val(res.email);
+				$("#u-skype").val(res.skype);
+				$("#u-mobile").val(res.mobile);
+				$("#u-withgp").val(res.atgp);
+				$("#u-preferredstart").val(res.prefstart);
+				$("#u-fnline").val(res.fnlm);
+				$("#u-lnline").val(res.lnlm);
+				$("#u-emailline").val(res.emaillm);
+				$("#u-fnhr").val(res.fnhr);
+				$("#u-lnhr").val(res.lnhr);
+				$("#u-emailhr").val(res.emailhr);
+				$("#u-skypehr").val(res.skypehr);
+			    $("#userpane").fadeIn();
+			});
+		}
+		//enter key capture
+		$(document).keypress(function(e) {
+		    if(e.which == 13) {
+		        if($('#userpane').css('display') != 'none')
+		        {
+		        	$("#updateuserbutton").click();
+		        }
+		        if($('#newuser').css('display') != 'none')
+		        {
+		        	$("#adduserbutton").click();
+		        }
+		    }
+		    
+
+		});
+		$(document).keydown(function(e){
+		      //CTRL + V keydown combo
+		      if(e.shiftKey && e.altKey && e.keyCode == 68)
+					{
+						if($('#userpane').css('display') != 'none')
+				        {
+				        	showDeleteBox();
+				        }
+					}
+		})
+		//delete box
+		function showDeleteBox(){
+			$("#delete").fadeIn();
+			$("#deletetext").html("Are you sure you want to delete user "+$('#u-fn').val()+" "+$('#u-ln').val()+"?<br>");
+		}
+		function deleteUser(user){
+			$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+user+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    type: "DELETE",
+			    async:true,
+			    timeout:30000
+			}).done(function( msg ) {
+			    console.log(msg);
+			});
+		}
+		//post
+		function postUser(user)
+		{
+			$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    type: "POST",
+			    data: JSON.stringify( user ),
+			    contentType: "application/json"
+			}).done(function( msg ) {
+			    console.log(msg);
+			});
+		}
+		function updateUser(user,toupdate)
+		{
+			$.ajax({
+			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+toupdate+"?apiKey=3NkoTwAUuREvFR0mvnrvCfL0SHzTu1kM",
+			    type: "PUT",
+			    data: JSON.stringify( user ),
+			    contentType: "application/json"
+			}).done(function( msg ) {
+			    console.log(msg);
+			});
+		}
+		function parseList(instring){
+			$('#keywords > tbody  > tr').each(function()
+			{
+				console.log( "Searching for " + instring + " in " + $('this td:nth-child(1)').text());
+				if($('this td:nth-child(0)').text().indexOf(instring) > -1){
+					console.log($('this td:nth-child(1)').text());
+					$("this").css({"color":"purple"});
+					console.log(instring + " is present!")
+				}
+			});
+			
+		}
+
+	</script>
+</body>
+</html>
