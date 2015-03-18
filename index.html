@@ -247,51 +247,55 @@
 	<div id="userpane">
 		<div>Selected user:</div>
 		<div id="closebuttonuserpane"><i class="fa fa-times"></i></div>
-		<input placeholder="Status" id="u-status" class="inputs"/>
+		<select placeholder="Status" id="u-status" class="inputs">
+			<option value="grad">graduate</option>
+			<option value="do">drop out</option>
+			<option value="nom">nominated</option>
+			<option value="rej">rejected</option>
+			<option value="enr">enrolled</option>
+			<option value="wai">waiting list</option>
+			<option value="unknown">?</option>
+		</select>
     	<input placeholder="First Name" id="u-fn" class="inputs"/>
     	<input placeholder="Last Name" id="u-ln" class="inputs"/>
     	<input placeholder="Username" id="u-username" class="inputs"/>
     	<input placeholder="Module" id="u-module" class="inputs"/>
     	<select id="u-nro" class="inputs">
-			<option value="int">International</option>
-			<option value="eu">EU Unit</option>
-			<option value="sci">Science Unit</option>
-			<option value="afr">Africa</option>
 			<option value="int">Greenpeace International</option>
-			<option value="int">EU Unit</option>
-			<option value="int">Research Laboratories</option>
-			<option value="int">Africa</option>
-			<option value="int">Argentina</option>
-			<option value="int">Australia / Pacific</option>
-			<option value="int">Belgium</option>
-			<option value="int">Brasil</option>
-			<option value="int">Canada</option>
-			<option value="int">Austria / Central and Eastern Europe</option>
-			<option value="int">Chile (Pacífico Sur)</option>
-			<option value="int">Czech Republic</option>
-			<option value="int">Denmark / Nordic</option>
-			<option value="int">East Asia</option>
-			<option value="int">Finland / Nordic</option>
-			<option value="int">France</option>
-			<option value="int">Germany</option>
-			<option value="int">Greece</option>
-			<option value="int">India</option>
-			<option value="int">Italy</option>
-			<option value="int">Japan</option>
-			<option value="int">Luxembourg</option>
-			<option value="int">Mediterranean</option>
-			<option value="int">Mexico</option>
-			<option value="int">Netherlands</option>
-			<option value="int">New Zealand</option>
-			<option value="int">Norway / Nordic</option>
-			<option value="int">Portugal</option>
-			<option value="int">Russia</option>
-			<option value="int">Southeast Asia</option>
-			<option value="int">Spain</option>
-			<option value="int">Sweden / Nordic</option>
-			<option value="int">Switzerland</option>
-			<option value="int">UK</option>
-			<option value="int">SA</option>
+			<option value="eu">EU Unit</option>
+			<option value="rl">Research Laboratories</option>
+			<option value="af">Africa</option>
+			<option value="arg">Argentina</option>
+			<option value="aus">Australia / Pacific</option>
+			<option value="bel">Belgium</option>
+			<option value="bra">Brasil</option>
+			<option value="can">Canada</option>
+			<option value="aus">Austria / Central and Eastern Europe</option>
+			<option value="chl">Chile (Pacífico Sur)</option>
+			<option value="cze">Czech Republic</option>
+			<option value="dnk">Denmark / Nordic</option>
+			<option value="ea">East Asia</option>
+			<option value="fin">Finland / Nordic</option>
+			<option value="fr">France</option>
+			<option value="gr">Germany</option>
+			<option value="grc">Greece</option>
+			<option value="ind">India</option>
+			<option value="it">Italy</option>
+			<option value="jpn">Japan</option>
+			<option value="lux">Luxembourg</option>
+			<option value="med">Mediterranean</option>
+			<option value="mex">Mexico</option>
+			<option value="nl">Netherlands</option>
+			<option value="nz">New Zealand</option>
+			<option value="nw">Norway / Nordic</option>
+			<option value="por">Portugal</option>
+			<option value="rus">Russia</option>
+			<option value="sea">Southeast Asia</option>
+			<option value="sp">Spain</option>
+			<option value="swe">Sweden / Nordic</option>
+			<option value="swz">Switzerland</option>
+			<option value="uk">UK</option>
+			<option value="us">SA</option>
 		</select> 
     	<input placeholder="Function" id="u-function" class="inputs"/>
     	<input placeholder="Unit" id="u-unit" class="inputs"/>
@@ -321,16 +325,55 @@
     <div id="newuser">
     	<div>Create a new user : </div>
     	<div id="closebutton"><i class="fa fa-times"></i></div>
-		<input placeholder="Status" id="n-status" class="inputs"/>
+		<select placeholder="Status" id="n-status" class="inputs">
+			<option value="grad">graduate</option>
+			<option value="do">drop out</option>
+			<option value="nom">nominated</option>
+			<option value="rej">rejected</option>
+			<option value="enr">enrolled</option>
+			<option value="wai">waiting list</option>
+			<option value="unknown">?</option>
+		</select>
     	<input placeholder="First Name" id="n-fn" class="inputs"/>
     	<input placeholder="Last Name" id="n-ln" class="inputs"/>
     	<input placeholder="Username" id="n-username" class="inputs"/>
     	<input placeholder="Module" id="n-module" class="inputs"/>
     	<select id="n-nro" class="inputs">
-			<option value="int">International</option>
+			<option value="int">Greenpeace International</option>
 			<option value="eu">EU Unit</option>
-			<option value="sci">Science Unit</option>
-			<option value="afr">Africa</option>
+			<option value="rl">Research Laboratories</option>
+			<option value="af">Africa</option>
+			<option value="arg">Argentina</option>
+			<option value="aus">Australia / Pacific</option>
+			<option value="bel">Belgium</option>
+			<option value="bra">Brasil</option>
+			<option value="can">Canada</option>
+			<option value="aus">Austria / Central and Eastern Europe</option>
+			<option value="chl">Chile (Pacífico Sur)</option>
+			<option value="cze">Czech Republic</option>
+			<option value="dnk">Denmark / Nordic</option>
+			<option value="ea">East Asia</option>
+			<option value="fin">Finland / Nordic</option>
+			<option value="fr">France</option>
+			<option value="gr">Germany</option>
+			<option value="grc">Greece</option>
+			<option value="ind">India</option>
+			<option value="it">Italy</option>
+			<option value="jpn">Japan</option>
+			<option value="lux">Luxembourg</option>
+			<option value="med">Mediterranean</option>
+			<option value="mex">Mexico</option>
+			<option value="nl">Netherlands</option>
+			<option value="nz">New Zealand</option>
+			<option value="nw">Norway / Nordic</option>
+			<option value="por">Portugal</option>
+			<option value="rus">Russia</option>
+			<option value="sea">Southeast Asia</option>
+			<option value="sp">Spain</option>
+			<option value="swe">Sweden / Nordic</option>
+			<option value="swz">Switzerland</option>
+			<option value="uk">UK</option>
+			<option value="us">SA</option>
 		</select> 
     	<input placeholder="Function" id="n-function" class="inputs"/>
     	<input placeholder="Unit" id="n-unit" class="inputs"/>
