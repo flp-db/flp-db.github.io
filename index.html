@@ -288,7 +288,11 @@
 			<option value="unknown">unknown</option>
 		</select></span>
 		<label>DeepDive:</label><span><input placeholder="DeepDive" id="u-dd" class="inputs"/></span>
+		<label>DeepDive Year:</label><span><input placeholder="DeepDive Year" id="u-ddyear" class="inputs"/></span>
+		<label>DeepDive Region:</label><span><input placeholder="DeepDive Region" id="u-ddregion" class="inputs"/></span>
 		<label>Foundation:</label><span><input placeholder="Foundation" id="u-fou" class="inputs"/></span>
+		<label>Foundation Year:</label><span><input placeholder="Foundation year" id="u-fouyear" class="inputs"/></span>
+		<label>Foundation Region:</label><span><input placeholder="Foundation region" id="u-fouregion" class="inputs"/></span>
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
     	<label>Username:</label><span><input placeholder="Username" id="u-username" class="inputs"/></span>
@@ -593,31 +597,31 @@
 				    for (var i = res.length - 1; i >= 0; i--) {
 				    	//console.log(res[i]);
 				    	if(res[i].status == "rejected".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		rejected++;
 				    	}
 				    	else if(res[i].status == "graduate".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		graduate++;
 				    	}
 				    	else if(res[i].status == "drop out".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:orange'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:orange'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		dropped++;
 				    	}
 				    	else if(res[i].status == "nominated".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		nominated++;
 				    	}
 				    	else if(res[i].status == "waiting list".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		waiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		enrolled++
 				    	}
 				    	else{
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i]._id.$oid+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		other++
 				    	}
 				    };
@@ -701,7 +705,11 @@
 			    //$("#userpane").append(res.fn);
 			    $("#u-status").val(res.status);
 			    $("#u-dd").val(res.dd);
+			    $("#u-ddyear").val(res.ddyear);
+			    $("#u-ddregion").val(res.ddregion);
 			    $("#u-fou").val(res.fou);
+			    $("#u-fouyear").val(res.fouyear);
+			    $("#u-fouregion").val(res.fouregion);
 			    $("#u-fn").val(res.fn);
 				$("#u-ln").val(res.ln);
 				$("#u-username").val(res.username);
