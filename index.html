@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="css/jquery.simple-dtpicker.css">
 <link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<!--
+	Region and year of either FOU DD
+	clear markers for each field
+	check tags for module, function, dob, linemanager fn, linemanager ln
+	fix wheel colors
+	separate wheels one for FOU one for DD one for total statuses
+	drop-out : black
+-->
 <style type="text/css">
 	* {
 		font-family: Arial;
@@ -684,10 +692,10 @@
 				$("#u-dob").val(res.dob);
 				$("#u-email").val(res.email);
 				$("#u-skype").val(res.skype);
-				$("#u-mobile").val(res.mobile);
+				$("#u-mobile").val(res.phone);
 				$("#u-withgp").val(res.atgp);
 				$("#u-preferredstart").val(res.prefstart);
-				$("#u-fnline").val(res.fnlm);
+				$("#u-fnline").val(res.lmname);
 				$("#u-lnline").val(res.lnlm);
 				$("#u-emailline").val(res.emaillm);
 				$("#u-fnhr").val(res.fnhr);
@@ -753,6 +761,28 @@
 		}
 		function updateUser(user,toupdate)
 		{
+			$("#u-status").val("");
+			    $("#u-fn").val("");
+				$("#u-ln").val("");
+				$("#u-username").val("");
+				$("#u-module").val("");
+				$("#u-nro").val(res."");
+				$("#u-function").val("");
+				$("#u-unit").val("");
+				$("#u-dob").val("");
+				$("#u-email").val("");
+				$("#u-skype").val("");
+				$("#u-mobile").val("");
+				$("#u-withgp").val("");
+				$("#u-preferredstart").val("");
+				$("#u-fnline").val("");
+				$("#u-lnline").val("");
+				$("#u-emailline").val("");
+				$("#u-fnhr").val("");
+				$("#u-lnhr").val("");
+				$("#u-emailhr").val("");
+				$("#u-skypehr").val("");
+
 			key=$("#keyin").val();
 			$.ajax({
 			    url: "https://api.mongolab.com/api/1/databases/flp/collections/users/"+toupdate+"?apiKey="+key,
