@@ -172,8 +172,8 @@
 	}
 	#closebutton, #closebuttonuserpane {
 		position:absolute;
-		right:0;
-		top:0;
+		right:17px;
+		top:17px;
 	}
 	#adduserbutton, #updateuserbutton {
 		margin-top: 5px;
@@ -535,7 +535,8 @@
 					fnhr:$("#n-fnhr").val(),
 					lnhr:$("#n-lnhr").val(),
 					emailhr:$("#n-emailhr").val(),
-					skypehr:$("#n-skypehr").val()
+					skypehr:$("#n-skypehr").val(),
+					comments:$("#n-commentsx").val()
 				})
 				$("#newuser").fadeOut();
 				$("#newuser").find('input:text').val(''); 
@@ -564,7 +565,8 @@
 					emaillm:$("#u-emailline").val(),
 					fnhr:$("#u-fnhr").val(),
 					emailhr:$("#u-emailhr").val(),
-					skypehr:$("#u-skypehr").val()
+					skypehr:$("#u-skypehr").val(),
+					comments:$("#u-comments").val()
 				}},currentselection);
 				 $("#userpane").fadeOut();
 				 setTimeout(function(){get()},1500);
@@ -715,6 +717,7 @@
 				$("#u-fnhr").val(res.hrname);
 				$("#u-emailhr").val(res.emailhr);
 				$("#u-skypehr").val(res.skypehr);
+				$("#u-comments").val(res.comments);
 			    $("#userpane").fadeIn();
 			});
 		}
