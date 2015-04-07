@@ -286,6 +286,22 @@
 			<option value="waiting">waiting list</option>
 			<option value="unknown">unknown</option>
 		</select></span>
+		<label>Dropped out status:</label>
+		<span><select placeholder="Dropout Status" id="u-dropstatus" class="inputs">
+			<option value="0">Dropped out before training: personal reasons</option>
+			<option value="1">Dropped out before training: work related reasons</option>
+			<option value="2">Dropped out before training: left GP</option>
+			<option value="3">Dropped out during training: personal reasons</option>
+			<option value="4">Dropped out during training: work related reasons</option>
+			<option value="5">Dropped out during training: left GP</option>
+		</select></span>
+		<label>Rejected Status:</label>
+		<span><select placeholder="Rejected Status" id="u-rejectedstatus" class="inputs">
+			<option value="0">Criteria: with GP since</option>
+			<option value="1">Criteria: leading teams</option>
+			<option value="2">Criteria: working international</option>
+			<option value="3">Other:</option>
+		</select></span>
 		<label>DeepDive:</label><span><select placeholder="DeepDive" id="u-dd" class="inputs">
 			<option value="no">no</option>
 			<option value="yes">yes</option>
@@ -331,10 +347,11 @@
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 		</select></span>
-		<label>interviewed:</label><span><select placeholder="Interviewed" id="u-lp" class="inputs">
+		<label>interviewed:</label><span><select placeholder="Interviewed" id="u-interviewed" class="inputs">
 			<option value="no">no</option>
 			<option value="yes">yes</option>
 		</select></span>
+		<label>Leaving GP:</label><span><input placeholder="First Name" id="u-leavinggp" class="inputs"/></span>
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
     	<label>Username:</label><span><input placeholder="Username" id="u-username" class="inputs"/></span>
@@ -749,6 +766,7 @@
 			    $("#u-fn").val(res.fn);
 			    $("#u-dd").val(res.dd);
 			    $("#u-ddcourse").val(res.ddnr);
+			    $("#u-dropstatus").val(red.dropstatus);
 				$("#u-ln").val(res.ln);
 				$("#u-username").val(res.username);
 				$("#u-module").val();
@@ -833,6 +851,7 @@
 			    $("#u-fn").val("");
 				$("#u-ln").val("");
 				$("#u-username").val("");
+				$("#u-dropstatus").val("");
 				$("#u-module").val("");
 				$("#u-nro").val("");
 				$("#u-function").val("");
