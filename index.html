@@ -584,10 +584,20 @@
 				var date = new Date(ts*1000 + d.getTimezoneOffset() * 60000)
 				postUser({
 					status:$("#n-status").val(),
+					dropstatus:$("#n-dropstatus").val(),
+					rejectedstatus:$("#n-rejectedstatus").val(),
+					dd:$("#n-dd").val(),
+					ddcourse:$("#n-ddcourse").val(),
+					fou:$("#n-fou").val(),
+					fouyear:$("#n-fouyear").val(),
+					fouregion:$("#n-fouregion").val(),
+					learningplace:$("#n-lp").val(),
+					lpyear:$("#n-lpyear").val(),
+					interviewed:$("#n-interviewed").val(),
 					fn:$("#n-fn").val(),
 					ln:$("#n-ln").val(),
-					ts:date,
-					username:$("#n-fn").val(),
+					username:$("#n-username").val(),
+					module:$("#n-module").val(),
 					nro:$("#n-nro").val(),
 					funct:$("#n-function").val(),
 					unit:$("#n-unit").val(),
@@ -600,10 +610,9 @@
 					lmname:$("#n-fnline").val(),
 					emaillm:$("#n-emailline").val(),
 					fnhr:$("#n-fnhr").val(),
-					lnhr:$("#n-lnhr").val(),
 					emailhr:$("#n-emailhr").val(),
 					skypehr:$("#n-skypehr").val(),
-					comments:$("#n-commentsx").val()
+					comments:$("#n-comments").val()
 				})
 				$("#newuser").fadeOut();
 				$("#newuser").find('input:text').val(''); 
@@ -616,9 +625,20 @@
 
 				updateUser({ "$set" : {
 					status:$("#u-status").val(),
+					dropstatus:$("#u-dropstatus").val(),
+					rejectedstatus:$("#u-rejectedstatus").val(),
+					dd:$("#u-dd").val(),
+					ddcourse:$("#u-ddcourse").val(),
+					fou:$("#u-fou").val(),
+					fouyear:$("#u-fouyear").val(),
+					fouregion:$("#u-fouregion").val(),
+					learningplace:$("#u-lp").val(),
+					lpyear:$("#u-lpyear").val(),
+					interviewed:$("#u-interviewed").val(),
 					fn:$("#u-fn").val(),
 					ln:$("#u-ln").val(),
 					username:$("#u-username").val(),
+					module:$("#u-module").val(),
 					nro:$("#u-nro").val(),
 					funct:$("#u-function").val(),
 					unit:$("#u-unit").val(),
@@ -847,32 +867,32 @@
 				//console.log(res);
 			    //$("#userpane").append(res.fn);
 			    $("#u-status").val(res.status);
-			    $("#u-dd").val(res.dd);
-			    $("#u-ddcourse").val(res.ddnr);
 			    $("#u-dropstatus").val(res.dropstatus);
-			    $("#u-fou").val(res.ddnr);
+			    $("#u-rejectedstatus").val(res.rejectedstatus);
+			    $("#u-dd").val(res.dd);
+			    $("#u-ddcourse").val(res.ddcourse);
+			    $("#u-fou").val(res.fou);
 			    $("#u-fouyear").val(res.fouyear);
 			    $("#u-fouregion").val(res.fouregion);
-			    $("#u-lp").val(res.lp);
+			    $("#u-lp").val(res.learningplace);
 			    $("#u-lpyear").val(res.lpyear);
 			    $("#u-interviewed").val(res.interviewed);
 			    $("#u-fn").val(res.fn);
 				$("#u-ln").val(res.ln);
 				$("#u-username").val(res.username);
-				$("#u-module").val();
+				$("#u-module").val(res.module);
 				$("#u-nro").val(res.nro);
-				$("#u-function").val(res.function);
+				$("#u-function").val(res.funct);
 				$("#u-unit").val(res.unit);
 				$("#u-dob").val(res.dob);
 				$("#u-email").val(res.email);
 				$("#u-skype").val(res.skype);
-				$("#u-mobile").val(res.phone);
+				$("#u-mobile").val(res.mobile);
 				$("#u-withgp").val(res.atgp);
 				$("#u-preferredstart").val(res.prefstart);
 				$("#u-fnline").val(res.lmname);
-				$("#u-lnline").val(res.lnlm);
 				$("#u-emailline").val(res.emaillm);
-				$("#u-fnhr").val(res.hrname);
+				$("#u-fnhr").val(res.fnhr);
 				$("#u-emailhr").val(res.emailhr);
 				$("#u-skypehr").val(res.skypehr);
 				$("#u-comments").val(res.comments);
