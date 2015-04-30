@@ -265,7 +265,9 @@
 
     <thead>
       <tr>
-      	<th data-sort="string" style="width:30%">Status</th>
+      	<th data-sort="string" style="width:10%">Status</th>
+      	<th data-sort="string" style="width:10%">FOU</th>
+      	<th data-sort="string" style="width:10%">DD</th>
         <th data-sort="string" style="width:35%">FirstName</th>
         <th data-sort="string" style="width:35%">LastName</th>
       </tr>
@@ -704,7 +706,7 @@
 				    		nominated++;
 				    	}
 				    	else if(res[i].status == "waiting list".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		waiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
