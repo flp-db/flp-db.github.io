@@ -417,7 +417,6 @@
     	<label>Skype:</label><span><input placeholder="Skype" id="u-skype" class="inputs"/></span>
     	<label>Mobile:</label><span><input placeholder="Mobile" id="u-mobile" class="inputs"/></span>
     	<label>In GP Since:</label><span><input placeholder="With GP since" id="u-withgp" name="u-withgp" class="inputs"/></span>
-    	<label>Pref.Start Date:</label><span><input placeholder="Preferred Start Date" id="u-preferredstart" name="u-preferredstart" class="inputs"/></span>
     	<br><label><b>LineManager info:</b></label><br><br>
     	<label>Line Manager:</label><span><input placeholder="Line Manager" id="u-fnline" class="inputs"/></span>
     	<label>Email LM:</label><span><input placeholder="Email Line Manager" id="u-emailline" class="inputs"/></span>
@@ -625,7 +624,6 @@
 					skype:$("#n-skype").val(),
 					mobile:$("#n-mobile").val(),
 					atgp:$("#n-withgp").val(),
-					prefstart:$("#n-preferredstart").val(),
 					lmname:$("#n-fnline").val(),
 					emaillm:$("#n-emailline").val(),
 					fnhr:$("#n-fnhr").val(),
@@ -910,7 +908,6 @@
 				$("#u-skype").val(res.skype);
 				$("#u-mobile").val(res.mobile);
 				$("#u-withgp").val(res.atgp);
-				$("#u-preferredstart").val(res.prefstart);
 				$("#u-fnline").val(res.lmname);
 				$("#u-emailline").val(res.emaillm);
 				$("#u-fnhr").val(res.fnhr);
