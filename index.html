@@ -294,7 +294,7 @@
 			<option value="nominated">nominated</option>
 			<option value="rejected">rejected</option>
 			<option value="enrolled">enrolled</option>
-			<option value="waiting">waiting list</option>
+			<option value="waitinglist">waiting list</option>
 			<option value="unknown">unknown</option>
 		</select></span>
 		<label>Dropped out status:</label>
@@ -437,7 +437,7 @@
 			<option value="nominated">nominated</option>
 			<option value="rejected">rejected</option>
 			<option value="enrolled">enrolled</option>
-			<option value="waiting">waiting list</option>
+			<option value="waitinglist">waiting list</option>
 			<option value="unknown">unknown</option>
 		</select>
     	<input placeholder="First Name" id="n-fn" class="inputs"/>
@@ -705,7 +705,7 @@
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		nominated++;
 				    	}
-				    	else if(res[i].status == "waiting list".trim()){
+				    	else if(res[i].status == "waitinglist".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		waiting++;
 				    	}
