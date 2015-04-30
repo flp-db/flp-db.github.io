@@ -372,7 +372,6 @@
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
     	<label>Username:</label><span><input placeholder="Username" id="u-username" class="inputs"/></span>
-    	<label>Module:</label><span><input placeholder="Module" id="u-module" class="inputs"/></span>
     	<label>NRO:</label><span><select id="u-nro" class="inputs">
 			<option value="int">Greenpeace International</option>
 			<option value="eu">EU Unit</option>
@@ -450,7 +449,6 @@
     	<input placeholder="First Name" id="n-fn" class="inputs"/>
     	<input placeholder="Last Name" id="n-ln" class="inputs"/>
     	<input placeholder="Username" id="n-username" class="inputs"/>
-    	<input placeholder="Module" id="n-module" class="inputs"/>
     	<select id="n-nro" class="inputs">
 			<option value="int">Greenpeace International</option>
 			<option value="eu">EU Unit</option>
@@ -615,7 +613,6 @@
 					fn:$("#n-fn").val(),
 					ln:$("#n-ln").val(),
 					username:$("#n-username").val(),
-					module:$("#n-module").val(),
 					nro:$("#n-nro").val(),
 					funct:$("#n-function").val(),
 					unit:$("#n-unit").val(),
@@ -656,7 +653,6 @@
 					fn:$("#u-fn").val(),
 					ln:$("#u-ln").val(),
 					username:$("#u-username").val(),
-					module:$("#u-module").val(),
 					nro:$("#u-nro").val(),
 					funct:$("#u-function").val(),
 					unit:$("#u-unit").val(),
@@ -899,7 +895,6 @@
 			    $("#u-fn").val(res.fn);
 				$("#u-ln").val(res.ln);
 				$("#u-username").val(res.username);
-				$("#u-module").val(res.module);
 				$("#u-nro").val(res.nro);
 				$("#u-function").val(res.funct);
 				$("#u-unit").val(res.unit);
