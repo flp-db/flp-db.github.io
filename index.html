@@ -706,7 +706,7 @@
 				    		nominated++;
 				    	}
 				    	else if(res[i].status == "waitinglist".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		waiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
@@ -714,7 +714,7 @@
 				    		enrolled++
 				    	}
 				    	else{
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
 				    		other++
 				    	}
 
