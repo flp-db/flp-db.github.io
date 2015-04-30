@@ -268,8 +268,9 @@
       	<th data-sort="string" style="width:10%">Status</th>
       	<th data-sort="string" style="width:10%">FOU</th>
       	<th data-sort="string" style="width:10%">DD</th>
-        <th data-sort="string" style="width:35%">FirstName</th>
-        <th data-sort="string" style="width:35%">LastName</th>
+        <th data-sort="string" style="width:30%">FirstName</th>
+        <th data-sort="string" style="width:30%">LastName</th>
+        <th data-sort="string" style="width:10%">Email</th>
       </tr>
     </thead>
 
@@ -295,7 +296,7 @@
 			<option value="rejected">rejected</option>
 			<option value="enrolled">enrolled</option>
 			<option value="waitinglist">waiting list</option>
-			<option value="unknown">unknown</option>
+			<option value="leftgreenp">leftgreenpeace</option>
 		</select></span>
 		<label>Dropped out status:</label>
 		<span><select placeholder="Dropout Status" id="u-dropstatus" class="inputs">
@@ -690,31 +691,31 @@
 				    for (var i = res.length - 1; i >= 0; i--) {
 				    	//console.log(res[i]);
 				    	if(res[i].status == "rejected".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		rejected++;
 				    	}
 				    	else if(res[i].status == "graduate".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		graduate++;
 				    	}
 				    	else if(res[i].status == "drop out".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		dropped++;
 				    	}
 				    	else if(res[i].status == "nominated".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		nominated++;
 				    	}
 				    	else if(res[i].status == "waitinglist".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		waiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		enrolled++
 				    	}
 				    	else{
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		other++
 				    	}
 
