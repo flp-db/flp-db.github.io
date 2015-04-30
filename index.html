@@ -915,7 +915,7 @@
 		}
 		//enter key capture
 		$(document).keypress(function(e) {
-		    if(e.which == 13) {
+		    if(e.which == 13 && e.shiftKey) {
 		        if($('#userpane').css('display') != 'none')
 		        {
 		        	$("#updateuserbutton").click();
