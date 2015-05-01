@@ -408,7 +408,7 @@
 			<option value="uk">UK</option>
 			<option value="us">SA</option>
 		</select></span>
-		
+
     	<label>Function:</label><span><input placeholder="Function" id="u-function" class="inputs"/></span>
     	<label>Unit:</label><span><input placeholder="Unit" id="u-unit" class="inputs"/></span>
     	<label>DOB:</label><span><input placeholder="Date of Birth" id="u-dob" name="u-dob" class="inputs"/></span>
@@ -516,6 +516,24 @@
 	var nominated = 0;
 	var waiting = 0;
 	var other = 0;
+
+	var ddrejected = 0;
+	var ddaccepted = 0;
+	var ddenrolled = 0;
+	var dddropped = 0;
+	var ddgraduate = 0;
+	var ddnominated = 0;
+	var ddwaiting = 0;
+	var ddother = 0;
+
+	var fourejected = 0;
+	var fouaccepted = 0;
+	var fouenrolled = 0;
+	var foudropped = 0;
+	var fougraduate = 0;
+	var founominated = 0;
+	var fouwaiting = 0;
+	var fouother = 0;
 	
 
 	
@@ -669,22 +687,42 @@
 				    	if(res[i].status == "rejected".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		rejected++;
+				    		if(res[i].dd=="yes")
+				    			ddrejected++;
+				    		if(res[i].fou=="yes")
+				    			fourejected++;
 				    	}
 				    	else if(res[i].status == "graduate".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		graduate++;
+				    		if(res[i].dd=="yes")
+				    			ddgraduate++;
+				    		if(res[i].fou=="yes")
+				    			fougraduate++;
 				    	}
 				    	else if(res[i].status == "drop out".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		dropped++;
+				    		if(res[i].dd=="yes")
+				    			dddropped++;
+				    		if(res[i].fou=="yes")
+				    			foudropped++;
 				    	}
 				    	else if(res[i].status == "nominated".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		nominated++;
+				    		if(res[i].dd=="yes")
+				    			ddnominated++;
+				    		if(res[i].fou=="yes")
+				    			founom++;
 				    	}
 				    	else if(res[i].status == "waitinglist".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		waiting++;
+				    		if(res[i].dd=="yes")
+				    			ddwaiting++;
+				    		if(res[i].fou=="yes")
+				    			fouwaiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
@@ -693,6 +731,10 @@
 				    	else{
 				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].dd+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		other++
+				    		if(res[i].dd=="yes")
+				    			ddother++;
+				    		if(res[i].fou=="yes")
+				    			fouother++;
 				    	}
 
 
@@ -723,37 +765,37 @@
 			
 			var data = [
 			{
-				value: enrolled,
+				value: fouenrolled,
 				color:"blue",
 				highlight: "#FF5A5E",
 				label: "Enrolled"
 			},{
-				value: rejected,
+				value: fourejected,
 				color: "red",
 				highlight: "#5AD3D1",
 				label: "Rejected"
 			},{
-				value: graduate,
+				value: fougraduate,
 				color: "green",
 				highlight: "white",
 				label: "Graduated"
 			},{
-				value: dropped,
+				value: foudropped,
 				color: "black",
 				highlight: "#5AD3D1",
 				label: "Dropped Out"
 			},{
-				value: other,
+				value: fouother,
 				color: "navy",
 				highlight: "#5AD3D1",
 				label: "Other"
 			},{
-				value: nominated,
+				value: founominated,
 				color: "blueviolet",
 				highlight: "#5AD3D1",
 				label: "nominated"
 			},{
-				value: waiting,
+				value: fouvwaiting,
 				color: "grey",
 				highlight: "#FFC870",
 				label: "Waiting List"
@@ -799,37 +841,37 @@
 			];
 			var data1 = [
 			{
-				value: enrolled,
+				value: ddenrolled,
 				color:"blue",
 				highlight: "#FF5A5E",
 				label: "Enrolled"
 			},{
-				value: rejected,
+				value: ddrejected,
 				color: "red",
 				highlight: "#5AD3D1",
 				label: "Rejected"
 			},{
-				value: graduate,
+				value: ddgraduate,
 				color: "green",
 				highlight: "white",
 				label: "Graduated"
 			},{
-				value: dropped,
+				value: dddropped,
 				color: "orange",
 				highlight: "#5AD3D1",
 				label: "Dropped Out"
 			},{
-				value: other,
+				value: ddother,
 				color: "black",
 				highlight: "#5AD3D1",
 				label: "Other"
 			},{
-				value: nominated,
+				value: ddnominated,
 				color: "blueviolet",
 				highlight: "#5AD3D1",
 				label: "nominated"
 			},{
-				value: waiting,
+				value: ddwaiting,
 				color: "grey",
 				highlight: "#FFC870",
 				label: "Waiting List"
