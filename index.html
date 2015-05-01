@@ -351,10 +351,10 @@
 			<option value="9">9</option>
 			<option value="99">99</option>
 		</select></span>
-		<label>DeepDive Interview:</label><span><select placeholder="DeepDive Interview" id="u-ddinterview" class="inputs">
+		<label>interviewed:</label><span><select placeholder="Interviewed" id="u-interviewed" class="inputs">
 			<option value="0">-</option>
-			<option value="yes">yes</option>
 			<option value="no">no</option>
+			<option value="yes">yes</option>
 		</select></span>
 		<br><label><b>LearningPlace info:</b></label><br><br>
 		<label>LearningPlace:</label><span><select placeholder="LearningPlace" id="u-lp" class="inputs">
@@ -369,10 +369,7 @@
 			<option value="2015">2015</option>
 		</select></span>
 		<br><label><b>Personal info:</b></label><br><br>
-		<label>interviewed:</label><span><select placeholder="Interviewed" id="u-interviewed" class="inputs">
-			<option value="no">no</option>
-			<option value="yes">yes</option>
-		</select></span>
+		
 		<label>Leaving GP:</label><span><input placeholder="First Name" id="u-leavinggp" class="inputs"/></span>
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
@@ -610,13 +607,12 @@
 					rejectedstatus:$("#n-rejectedstatus").val(),
 					dd:$("#n-dd").val(),
 					ddcourse:$("#n-ddcourse").val(),
-					ddinterview:$("#n-ddinterview").val(),
+					interviewed:$("#n-interviewed").val(),
 					fou:$("#n-fou").val(),
 					fouyear:$("#n-fouyear").val(),
 					fouregion:$("#n-fouregion").val(),
 					learningplace:$("#n-lp").val(),
 					lpyear:$("#n-lpyear").val(),
-					interviewed:$("#n-interviewed").val(),
 					fn:$("#n-fn").val(),
 					ln:$("#n-ln").val(),
 					username:$("#n-username").val(),
@@ -652,13 +648,12 @@
 					rejectedstatus:$("#u-rejectedstatus").val(),
 					dd:$("#u-dd").val(),
 					ddcourse:$("#u-ddcourse").val(),
-					ddinterview:$("#u-ddinterview").val(),
+					interviewed:$("#u-interviewed").val(),
 					fou:$("#u-fou").val(),
 					fouyear:$("#u-fouyear").val(),
 					fouregion:$("#u-fouregion").val(),
 					learningplace:$("#u-lp").val(),
 					lpyear:$("#u-lpyear").val(),
-					interviewed:$("#u-interviewed").val(),
 					fn:$("#u-fn").val(),
 					ln:$("#u-ln").val(),
 					username:$("#u-username").val(),
@@ -895,13 +890,12 @@
 			    $("#u-rejectedstatus").val(res.rejectedstatus);
 			    $("#u-dd").val(res.dd);
 			    $("#u-ddcourse").val(res.ddcourse);
-			    $("#u-ddinterview").val(res.ddinterview);
+			    $("#u-interviewed").val(res.interviewed);
 			    $("#u-fou").val(res.fou);
 			    $("#u-fouyear").val(res.fouyear);
 			    $("#u-fouregion").val(res.fouregion);
 			    $("#u-lp").val(res.learningplace);
 			    $("#u-lpyear").val(res.lpyear);
-			    $("#u-interviewed").val(res.interviewed);
 			    $("#u-fn").val(res.fn);
 				$("#u-ln").val(res.ln);
 				$("#u-username").val(res.username);
