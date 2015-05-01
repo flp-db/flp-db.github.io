@@ -351,6 +351,11 @@
 			<option value="9">9</option>
 			<option value="99">99</option>
 		</select></span>
+		<label>DeepDive Interview:</label><span><select placeholder="DeepDive Interview" id="u-ddinterview" class="inputs">
+			<option value="0">-</option>
+			<option value="yes">yes</option>
+			<option value="no">no</option>
+		</select></span>
 		<br><label><b>LearningPlace info:</b></label><br><br>
 		<label>LearningPlace:</label><span><select placeholder="LearningPlace" id="u-lp" class="inputs">
 			<option value="no">no</option>
@@ -433,7 +438,7 @@
 		    <div id='cancelbut'> CANCEL </div>
 		</div>
 	</div>
-
+	<!--TB DELETED-->
     <div id="newuser">
     	<div>Create a new user : </div>
     	<div id="closebutton"><i class="fa fa-times"></i></div>
@@ -502,7 +507,7 @@
     	<textarea placeholder="Comments" id="n-comments" class="inputs"></textarea> 
     	<div id="adduserbutton"> Add User </div>
     </div>
-
+    <!--^TB DELETED^-->
 
 	<script type="text/javascript">
 	var master;
@@ -597,6 +602,7 @@
 				var d = new Date();
 				var ts = Date.now() /1000 |0
 				var date = new Date(ts*1000 + d.getTimezoneOffset() * 60000)
+				//TO BE MODIFIED AND COPIED FROM u-xxxxx
 				postUser({
 					rank:$("#n-rank").val(),
 					status:$("#n-status").val(),
@@ -604,6 +610,7 @@
 					rejectedstatus:$("#n-rejectedstatus").val(),
 					dd:$("#n-dd").val(),
 					ddcourse:$("#n-ddcourse").val(),
+					ddinterview:$("#n-ddinterview").val(),
 					fou:$("#n-fou").val(),
 					fouyear:$("#n-fouyear").val(),
 					fouregion:$("#n-fouregion").val(),
@@ -627,7 +634,8 @@
 					emailhr:$("#n-emailhr").val(),
 					skypehr:$("#n-skypehr").val(),
 					comments:$("#n-comments").val()
-				})
+				});
+				//^TO BE MODIFIED AND COPIED FROM u-xxxxx^
 				$("#newuser").fadeOut();
 				$("#newuser").find('input:text').val(''); 
 				setTimeout(function(){get()},1500);
@@ -644,6 +652,7 @@
 					rejectedstatus:$("#u-rejectedstatus").val(),
 					dd:$("#u-dd").val(),
 					ddcourse:$("#u-ddcourse").val(),
+					ddinterview:$("#u-ddinterview").val(),
 					fou:$("#u-fou").val(),
 					fouyear:$("#u-fouyear").val(),
 					fouregion:$("#u-fouregion").val(),
@@ -886,6 +895,7 @@
 			    $("#u-rejectedstatus").val(res.rejectedstatus);
 			    $("#u-dd").val(res.dd);
 			    $("#u-ddcourse").val(res.ddcourse);
+			    $("#u-ddinterview").val(res.ddinterview);
 			    $("#u-fou").val(res.fou);
 			    $("#u-fouyear").val(res.fouyear);
 			    $("#u-fouregion").val(res.fouregion);
@@ -968,6 +978,7 @@
 		}
 		function updateUser(user,toupdate)
 		{
+			//TO BE MODIFIED TO REFLECT UPDATED VARIABLES
 			$("#u-status").val("");
 			$("#u-dd").val("");
 			$("#u-fou").val("");
