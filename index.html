@@ -1064,8 +1064,8 @@
 		}
 		$("#myChart").click( 
 			function(evt){
-				var activePoints = myNewChart.getPointsAtEvent(evt);
-				console.log(activePoints);
+				var activeBars = myNewChart.getSegmentsAtEvent(evt);
+				console.log(activeBars);
 			}
 		);  
 	</script>
