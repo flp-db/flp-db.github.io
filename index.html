@@ -331,6 +331,10 @@
 			<option value="no">no</option>
 			<option value="yes">yes</option>
 		</select></span>
+		<label>DeepDive Rejected:</label><span><select placeholder="DD Rejected" id="u-ddrejected" class="inputs">
+			<option value="no">no</option>
+			<option value="yes">yes</option>
+		</select></span>
 		<label>DeepDive Course:</label><span><select placeholder="DeepDive Course" id="u-ddcourse" class="inputs">
 			<option value="0">-</option>
 			<option value="1">1</option>
@@ -635,6 +639,7 @@
 					dropstatus:$("#u-dropstatus").val(),
 					rejectedstatus:$("#u-rejectedstatus").val(),
 					dd:$("#u-dd").val(),
+					ddrejected:$("#u-ddrejected").val(),
 					ddcourse:$("#u-ddcourse").val(),
 					rank:$("#u-rank").val(),
 					interviewed:$("#u-interviewed").val(),
@@ -902,6 +907,7 @@
 			    $("#u-dropstatus").val(res.dropstatus);
 			    $("#u-rejectedstatus").val(res.rejectedstatus);
 			    $("#u-dd").val(res.dd);
+			    $("#u-ddrejected").val(res.ddrejected);
 			    $("#u-ddcourse").val(res.ddcourse);
 			    $("#u-interviewed").val(res.interviewed);
 			    $("#u-rank").val(res.rank);
