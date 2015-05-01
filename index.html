@@ -1065,7 +1065,7 @@
 		$("#myChart").click( 
 			function(evt){
 				var activeBars = myNewChart.getSegmentsAtEvent(evt);
-				console.log(activeBars);
+				console.log(activeBars[0]._saved.label);
 			}
 		);  
 	</script>
