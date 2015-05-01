@@ -1063,7 +1063,7 @@
 		}
 		$("#myChart").click( 
 			function(evt){
-				var activePoints = myNewChart.getSegmentsAtEvent(evt);
+				var activePoints = $("#myChart").getSegmentsAtEvent(evt);
 				console.log(activePoints);
 			}
 		);  
