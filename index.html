@@ -351,10 +351,15 @@
 			<option value="9">9</option>
 			<option value="99">99</option>
 		</select></span>
-		<label>interviewed:</label><span><select placeholder="Interviewed" id="u-interviewed" class="inputs">
+		<label>DD Interviewed:</label><span><select placeholder="Interviewed" id="u-interviewed" class="inputs">
 			<option value="0">-</option>
 			<option value="no">no</option>
 			<option value="yes">yes</option>
+		</select></span>
+		<label>DD Rank:</label><span><select placeholder="DeepDive Rank" id="u-ddrank" class="inputs">
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
 		</select></span>
 		<br><label><b>LearningPlace info:</b></label><br><br>
 		<label>LearningPlace:</label><span><select placeholder="LearningPlace" id="u-lp" class="inputs">
@@ -369,7 +374,6 @@
 			<option value="2015">2015</option>
 		</select></span>
 		<br><label><b>Personal info:</b></label><br><br>
-		
 		<label>Leaving GP:</label><span><input placeholder="First Name" id="u-leavinggp" class="inputs"/></span>
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
@@ -607,6 +611,7 @@
 					rejectedstatus:$("#n-rejectedstatus").val(),
 					dd:$("#n-dd").val(),
 					ddcourse:$("#n-ddcourse").val(),
+					ddrank:$("#n-ddrank").val(),
 					interviewed:$("#n-interviewed").val(),
 					fou:$("#n-fou").val(),
 					fouyear:$("#n-fouyear").val(),
@@ -649,6 +654,7 @@
 					dd:$("#u-dd").val(),
 					ddcourse:$("#u-ddcourse").val(),
 					interviewed:$("#u-interviewed").val(),
+					ddrank:$("#u-ddrank").val(),
 					fou:$("#u-fou").val(),
 					fouyear:$("#u-fouyear").val(),
 					fouregion:$("#u-fouregion").val(),
@@ -891,6 +897,7 @@
 			    $("#u-dd").val(res.dd);
 			    $("#u-ddcourse").val(res.ddcourse);
 			    $("#u-interviewed").val(res.interviewed);
+			    $("#u-ddrank").val(res.ddrank);
 			    $("#u-fou").val(res.fou);
 			    $("#u-fouyear").val(res.fouyear);
 			    $("#u-fouregion").val(res.fouregion);
