@@ -372,7 +372,6 @@
 		<label>Leaving GP:</label><span><textarea placeholder="Reason Left GP" id="u-leavinggp" class="inputs"></textarea></span>
     	<label>First Name:</label><span><input placeholder="First Name" id="u-fn" class="inputs"/></span>
     	<label>Last Name:</label><span><input placeholder="Last Name" id="u-ln" class="inputs"/></span>
-    	<label>Username:</label><span><input placeholder="Username" id="u-username" class="inputs"/></span>
     	<label>NRO:</label><span><select id="u-nro" class="inputs">
 			<option value="int">Greenpeace International</option>
 			<option value="eu">EU Unit</option>
@@ -625,9 +624,9 @@
 					fouregion:$("#u-fouregion").val(),
 					learningplace:$("#u-lp").val(),
 					lpyear:$("#u-lpyear").val(),
+					leavinggp:$("#u-leavinggp").val(),
 					fn:$("#u-fn").val(),
 					ln:$("#u-ln").val(),
-					username:$("#u-username").val(),
 					nro:$("#u-nro").val(),
 					funct:$("#u-function").val(),
 					unit:$("#u-unit").val(),
@@ -868,9 +867,9 @@
 			    $("#u-fouregion").val(res.fouregion);
 			    $("#u-lp").val(res.learningplace);
 			    $("#u-lpyear").val(res.lpyear);
+			    $("#u-leavinggp").val(res.leavinggp);
 			    $("#u-fn").val(res.fn);
 				$("#u-ln").val(res.ln);
-				$("#u-username").val(res.username);
 				$("#u-nro").val(res.nro);
 				$("#u-function").val(res.funct);
 				$("#u-unit").val(res.unit);
@@ -950,7 +949,6 @@
 			$("#u-fou").val("");
 			    $("#u-fn").val("");
 				$("#u-ln").val("");
-				$("#u-username").val("");
 				$("#u-dropstatus").val("");
 				$("#u-module").val("");
 				$("#u-nro").val("");
