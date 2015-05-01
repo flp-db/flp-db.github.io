@@ -556,6 +556,7 @@
 	var fouwaiting = 0;
 	var fouother = 0;
 	
+	var myNewChart, myNewChart0, myNewChart1;
 
 	
 		$(document).ready(function(){
@@ -908,9 +909,9 @@
 				segmentShowStroke : false,
 				animateScale : true
 			}
-			var myNewChart = new Chart(ctx).Doughnut(data, pieOptions);
-			var myNewChart0 = new Chart(ctx0).Doughnut(data0, pieOptions);
-			var myNewChart1 = new Chart(ctx1).Doughnut(data1, pieOptions);
+			myNewChart = new Chart(ctx).Doughnut(data, pieOptions);
+			myNewChart0 = new Chart(ctx0).Doughnut(data0, pieOptions);
+			myNewChart1 = new Chart(ctx1).Doughnut(data1, pieOptions);
 		}
 		//getuser
 		function getUser(user)
