@@ -1063,7 +1063,8 @@
 		}
 		$("#myChart").click( 
 			function(evt){
-				console.log(evt);
+				var activePoints = myNewChart.getPointsAtEvent(evt);
+				console.log(activePoints);
 			}
 		);  
 	</script>
