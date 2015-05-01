@@ -301,13 +301,6 @@
 			<option value="4">Dropped out during training: work related reasons</option>
 			<option value="5">Dropped out during training: left GP</option>
 		</select></span>
-		<label>Rejected Status:</label>
-		<span><select placeholder="Rejected Status" id="u-rejectedstatus" class="inputs">
-			<option value="0">Criteria: with GP since</option>
-			<option value="1">Criteria: leading teams</option>
-			<option value="2">Criteria: working international</option>
-			<option value="3">Other:</option>
-		</select></span>
 		<br><label><b>Foundation info:</b></label><br><br>
 		<label>Foundation:</label><span><select placeholder="Foundation" id="u-fou" class="inputs">
 			<option value="no">no</option>
@@ -644,7 +637,6 @@
 				updateUser({ "$set" : {
 					status:$("#u-status").val(),
 					dropstatus:$("#u-dropstatus").val(),
-					rejectedstatus:$("#u-rejectedstatus").val(),
 					dd:$("#u-dd").val(),
 					ddrejected:$("#u-ddrejected").val(),
 					ddcourse:$("#u-ddcourse").val(),
@@ -914,7 +906,6 @@
 			    
 			    $("#u-status").val(res.status);
 			    $("#u-dropstatus").val(res.dropstatus);
-			    $("#u-rejectedstatus").val(res.rejectedstatus);
 			    $("#u-dd").val(res.dd);
 			    $("#u-ddrejected").val(res.ddrejected);
 			    $("#u-ddcourse").val(res.ddcourse);
