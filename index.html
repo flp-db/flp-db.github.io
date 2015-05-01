@@ -692,7 +692,7 @@
 				    for (var i = res.length - 1; i >= 0; i--) {
 				    	//console.log(res[i]);
 				    	if(res[i].status == "rejected".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:red'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		rejected++;
 				    		if(res[i].dd=="yes")
 				    			ddrejected++;
@@ -700,7 +700,7 @@
 				    			fourejected++;
 				    	}
 				    	else if(res[i].status == "graduate".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:green'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		graduate++;
 				    		if(res[i].dd=="yes")
 				    			ddgraduate++;
@@ -708,7 +708,7 @@
 				    			fougraduate++;
 				    	}
 				    	else if(res[i].status == "drop out".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:black'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		dropped++;
 				    		if(res[i].dd=="yes")
 				    			dddropped++;
@@ -716,7 +716,7 @@
 				    			foudropped++;
 				    	}
 				    	else if(res[i].status == "nominated".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blueviolet'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		nominated++;
 				    		if(res[i].dd=="yes")
 				    			ddnominated++;
@@ -724,7 +724,7 @@
 				    			founominated++;
 				    	}
 				    	else if(res[i].status == "waitinglist".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:navy'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		waiting++;
 				    		if(res[i].dd=="yes")
 				    			ddwaiting++;
@@ -732,11 +732,11 @@
 				    			fouwaiting++;
 				    	}
 				    	else if(res[i].status == "enrolled".trim()){
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:blue'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+r(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		enrolled++
 				    	}
 				    	else{
-				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+res[i].nro.toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
+				    		$("#results").append("<tr id='"+res[i]._id.$oid+"'><td style='background-color:grey'>"+res[i].status+"</td><td>"+res[i].fou+"</td><td>"+res[i].fouyear+"-"+res[i].fouregion+"</td><td>"+res[i].dd+"</td><td>"+res[i].ddnr+"</td><td>"+(res[i].nro || "").toUpperCase()+"</td><td>"+res[i].fn+"</td><td>"+res[i].ln+"</td><td>"+res[i].email+"</td></tr>");
 				    		other++
 				    		if(res[i].dd=="yes")
 				    			ddother++;
