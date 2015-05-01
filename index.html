@@ -326,12 +326,12 @@
 			<option value="SA-AF">SA-AF</option>
 			<option value="AAP">AAP</option>
 		</select></span>
+		<label>Foundation Rejected:</label><span><select placeholder="Foundation Year" id="u-fourejected" class="inputs">
+			<option value="yes">-</option>
+			<option value="no">2014</option>
+		</select></span>
 		<br><label><b>DeepDive info:</b></label><br><br>
 		<label>DeepDive:</label><span><select placeholder="DeepDive" id="u-dd" class="inputs">
-			<option value="no">no</option>
-			<option value="yes">yes</option>
-		</select></span>
-		<label>DeepDive Rejected:</label><span><select placeholder="DD Rejected" id="u-ddrejected" class="inputs">
 			<option value="no">no</option>
 			<option value="yes">yes</option>
 		</select></span>
@@ -359,6 +359,10 @@
 			<option value="A">A</option>
 			<option value="B">B</option>
 			<option value="C">C</option>
+		</select></span>
+		<label>DeepDive Rejected:</label><span><select placeholder="DD Rejected" id="u-ddrejected" class="inputs">
+			<option value="no">no</option>
+			<option value="yes">yes</option>
 		</select></span>
 		<br><label><b>LearningPlace info:</b></label><br><br>
 		<label>LearningPlace:</label><span><select placeholder="LearningPlace" id="u-lp" class="inputs">
@@ -641,10 +645,12 @@
 					dd:$("#u-dd").val(),
 					ddrejected:$("#u-ddrejected").val(),
 					ddcourse:$("#u-ddcourse").val(),
+					ddrejected:$("#u-ddrejected").val(),
 					rank:$("#u-rank").val(),
 					interviewed:$("#u-interviewed").val(),
 					fou:$("#u-fou").val(),
 					fouyear:$("#u-fouyear").val(),
+					fourejected:$("#u-fourejected").val(),
 					fouregion:$("#u-fouregion").val(),
 					learningplace:$("#u-lp").val(),
 					lpyear:$("#u-lpyear").val(),
@@ -914,6 +920,7 @@
 			    $("#u-fou").val(res.fou);
 			    $("#u-fouyear").val(res.fouyear);
 			    $("#u-fouregion").val(res.fouregion);
+			    $("#u-fourejected").val(res.fourejected);
 			    $("#u-lp").val(res.learningplace);
 			    $("#u-lpyear").val(res.lpyear);
 			    $("#u-leavinggp").val(res.leavinggp);
