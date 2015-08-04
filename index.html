@@ -639,9 +639,29 @@
 				var ts = Date.now() /1000 |0
 				var date = new Date(ts*1000 + d.getTimezoneOffset() * 60000)
 				//TO BE MODIFIED AND COPIED FROM u-xxxxx
-				postUser({
-
-				});
+				postUser(
+					{ "$set" : {
+					 status:$("#n-status").val(),
+					 fn:$("#n-fn").val(),
+					 ln:$("#n-ln").val(),
+					 nro:$("#n-nro").val(),
+					 funct:$("#n-function").val(),
+					 unit:$("#n-unit").val(),
+					 dob:$("#n-dob").val(),
+					 email:$("#n-email").val(),
+					 skype:$("#n-skype").val(),
+					 mobile:$("#n-mobile").val(),
+					 atgp:$("#n-withgp").val(),
+					 prefstart:$("#n-preferredstart").val(),
+					 lmname:$("#n-fnline").val(),
+					 emaillm:$("#n-emailline").val(),
+					 fnhr:$("#n-fnhr").val(),
+					 emailhr:$("#n-emailhr").val(),
+					 skypehr:$("#n-skypehr").val(),
+					 comments:$("#n-comments").val()
+					 }
+					}
+				);
 				//^TO BE MODIFIED AND COPIED FROM u-xxxxx^
 				$("#newuser").fadeOut();
 				$("#newuser").find('input:text').val(''); 
