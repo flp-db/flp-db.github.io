@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<meta charset="utf-8">
+<title>FLP Entry</title>
+<style type="text/css">
+</style>
+</head>
+<div class="container">
+	
+<body bgcolor=#cfe7fa>
+	<p><font size="10"><u>FLP Foundations Application Form</u></font></p>
+	<img src="http://i.imgur.com/DJYGOYs.png">
+	<p><b><font size="5">Dear HR person,</font></b><br>
+You want to register a staff member - Great!<br>
+PLEASE BE AWARE THAT THIS IS THE FORM FOR THE FOUNDATION CANDIDATES.<br>
+<br>
+By filling out this form, you confirm you went through the following steps:<br>
+1. You talked with the nominated trainee about the programme and got their consent to dedicate time to it.<br>
+2. You talked with the line manager of the trainee in order to get their approval and commitment to support the trainee in their learning journey.<br>
+3. You filled in the assessment form together with the trainee and the line manager.<br><br>
+Please browse through the questions before starting to fill in, in order to get an overview first.<br><br> </p>
+</div>
+<div class="container">
+	<form method="POST">
+	<div>
+        <label for="fn">First Name:</label>
+        <input type="text" id="fn" size="34"/>
+    </div>
+    <br>
+    <div>
+        <label for="ln">Last Name:</label>
+        <input type="email" id="ln" size="34"/>
+    </div>
+    <br>
+    <div>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" />
+    </div>
+    <br>
+    <div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" size="50"/>
+    </div>
+    <br>
+    <div>
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" size="34"/>
+    </div>
+    <br>
+    <div>
+        <label for="nro">NRO:</label>
+        <select id="nro" class="inputs">
+			<option value="gpi">Greenpeace International</option>
+			<option value="eu">EU Unit</option>
+			<option value="rl">Research Laboratories</option>
+			<option value="af">Africa</option>
+			<option value="andino">Andino</option>
+			<option value="aus">Australia / Pacific</option>
+			<option value="bel">Belgium</option>
+			<option value="bra">Brasil</option>
+			<option value="can">Canada</option>
+			<option value="CEE">Central Eastern Europe</option>
+			<option value="chl">Chile (Pacífico Sur)</option>
+			<option value="cze">Czech Republic</option>
+			<option value="ea">East Asia</option>
+			<option value="fr">France</option>
+			<option value="gr">Germany</option>
+			<option value="grc">Greece</option>
+			<option value="ind">India</option>
+			<option value="it">Italy</option>
+			<option value="jpn">Japan</option>
+			<option value="lux">Luxembourg</option>
+			<option value="med">Mediterranean</option>
+			<option value="mex">Mexico</option>
+			<option value="nl">Netherlands</option>
+			<option value="nz">New Zealand</option>
+			<option value="nordic">Nordic</option>
+			<option value="por">Portugal</option>
+			<option value="rus">Russia</option>
+			<option value="sea">Southeast Asia</option>
+			<option value="sp">Spain</option>
+			<option value="swz">Switzerland</option>
+			<option value="uk">UK</option>
+			<option value="us">USA</option>
+		</select>
+    </div>
+    <br>
+    <div>
+        <label for="unit">Unit:</label>
+        <input type="text" id="unit" size="34"/>
+    </div>
+    <br>
+    <div>
+        <label for="function">Function:</label>
+        <input type="text" id="function" size="50"/>
+    </div>
+    <br>
+	<div>
+        <label for="region">Region:</label>
+        <select id="region" class="inputs">
+			<option value="probably">FOU EU-AF Run 1</option>
+			<option value="wanna">FOU EU-AF Run 2</option>
+			<option value="change">FOU AM Run 1</option>
+			<option value="these">FOU AM Run 2</option>
+			<option value="to">FOU AAPNZ Run 1</option>
+			<option value="values">FOU AAPNZ Run 2</option>
+			</select>
+    </div>
+    <br>
+    <div>
+        <label for="fnline">Line Manager:</label>
+        <input type="email" id="fnline" size="50"/>
+    </div>
+    <br>
+    <div>
+        <label for="emaillm">Line Manager Email:</label>
+        <input type="text" id="emaillm" size="50"/>
+    </div>
+    <br>
+    <div>
+        <label for="fnhr">HR Representative:</label>
+        <input type="email" id="fnhr" size="50"/>
+    </div>
+    <br>
+    <div>
+        <label for="emailhr">HR Reps Email:</label>
+        <input type="text" id="emailhr" size="50"/>
+    </div>
+    <br>
+    <div>
+        <label for="skypehr">HR Rep Skype:</label>
+        <input type="text" id="skypehr" size="34"/>
+    </div>
+    <br>
+    <div>
+        <label for="commments">Comments:</label>
+        <input type="text" id="comments" style="height:100px;width:500px"/>
+    </div>
+	</form>
+	<input type="button" id="newuser" value="Submit">
+</div>
+
+<script>
+$("#newuser").click(function(){
+	var a  = {
+		 "fn":$("#fn").val(),
+		 "ln":$("#ln").val(),
+		 "dob":$("#dob").val(),
+		 "email":$("#email").val(),
+		 "phone":$("#phone").val(),
+		 "nro":$("#nro").val(),
+		 "unit":$("#unit").val(),
+		 "funct":$("#function").val(),
+		 "region":$("#region").val(),
+		 "lmname":$("#fnline").val(),
+		 "emaillm":$("#emaillm").val(),
+		 "hrname":$("#fnhr").val(),
+		 "emailhr":$("#emailhr").val(),
+		 "skypehr":$("#skypehr").val(),
+		 "comments":$("#comments").val()
+	};
+	console.log(JSON.stringify(a));
+	postUser(a);
+});
+
+function postUser(user)
+{
+	//key=$("#keyin").val();
+	$.ajax({
+	    url: "https://greenpeace.international/tools/pushToMongo.php",
+	    type: "POST",
+	    data: user
+	}).success(function( msg ) {
+	    console.log(msg);
+	});
+}
+</script>
+</body>
+</html>
