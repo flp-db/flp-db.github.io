@@ -17,7 +17,6 @@
 	<img src="http://i.imgur.com/DJYGOYs.png">
 	<p><b><font size="5">Dear HR person,</font></b><br>
 You want to register a staff member - Great!<br>
-PLEASE BE AWARE THAT THIS IS THE FORM FOR THE FOUNDATION CANDIDATES.<br>
 <br>
 By filling out this form, you confirm you went through the following steps:<br>
 1. You talked with the nominated trainee about the programme and got their consent to dedicate time to it.<br>
@@ -120,6 +119,23 @@ Please browse through the questions before starting to fill in, in order to get 
     </div>
     <br>
     <div>
+        <label for="isgrad">Is the candidate a graduate from the FOUNDATIONS training?</label>
+        <select id="isgrad" class="inputs">
+           <option value="yes" >yes</option>
+           <option value="no" >no</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <label for="yeargrad">If yes, which year?</label>
+        <select id="yeargrad" class="inputs">
+           <option value="none" >not applicable</option>	
+           <option value="yes" >yes</option>
+           <option value="no" >no</option>
+        </select>
+    </div>
+    <br>
+    <div>
         <label for="fnline">Name of trainee's Line Manager:</label>
         <input type="email" id="fnline" size="50"/>
     </div>
@@ -165,6 +181,8 @@ $("#newuser").click(function(){
 		 "funct":$("#function").val(),
 		 "region":$("#region").val(),
 		 "withgp":$("#withgp").val(),
+		 "isgrad":$("#isgrad").val(),
+		 "yeargrad":$("#yeargrad").val(),
 		 "lmname":$("#fnline").val(),
 		 "emaillm":$("#emaillm").val(),
 		 "hrname":$("#fnhr").val(),
@@ -180,7 +198,7 @@ function postUser(user)
 {
 	//key=$("#keyin").val();
 	$.ajax({
-	    url: "http://greenpeace.international/tools/pushToMongo.php",
+	    url: "http://greenpeace.international/tools/pushDDToMongo.php",
 	    type: "POST",
 	    data: user
 	}).success(function( msg ) {
