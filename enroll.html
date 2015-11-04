@@ -186,12 +186,12 @@ function postUser(user)
 {
 	//key=$("#keyin").val();
 	$.ajax({
-	    url: "https://greenpeace.international/tools/pushToMongo.php",
+	    url: "http://greenpeace.international/tools/pushToMongo.php",
 	    type: "POST",
 	    data: user
 	}).success(function( msg ) {
 	    //console.log(msg);
-	    window.location.href = "https://flp-db.github.io/thanks.html";
+	    window.location.href = "http://flp-db.github.io/thanks.html";
 	});
 }
 </script>
