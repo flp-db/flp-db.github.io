@@ -344,6 +344,11 @@
 			<option value="SA-AF">SA-AF</option>
 			<option value="AAP">AAP</option>
 		</select></span>
+		<label>Foundation Round:</label><span><select placeholder="Foundation Round" id="u-fouround" class="inputs">
+			<option value="">-</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select></span>
 		<label>Foundation Rejected:</label><span><select placeholder="Foundation Year" id="u-fourejected" class="inputs">
 			<option value="99">-</option>
 			<option value="0">Criteria: with GP since</option>
@@ -687,6 +692,7 @@
 					fouyear:$("#u-fouyear").val(),
 					fourejected:$("#u-fourejected").val(),
 					fouregion:$("#u-fouregion").val(),
+					fouround:$("#u-fouround").val(),
 					learningplace:$("#u-lp").val(),
 					lpyear:$("#u-lpyear").val(),
 					leavinggp:$("#u-leavinggp").val(),
